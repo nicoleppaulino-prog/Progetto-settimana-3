@@ -1,43 +1,93 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Week Project — Settimana III</title>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
-
   <header>
-    <!-- Titolo dell'app + sottotitolo + button tema chiaro/scuro -->
+    <div class="header-left">
+      <h1>La mia Bookshelf</h1> <!--pizza-->
+      <p>Aggiungi i libri che hai letto o che vuoi leggere.</p> <!--porchetta-->
+    </div>
+    <button id="bottone">Tema scuro</button>
   </header>
-
   <main>
-
     <section class="form">
-      <!-- Form di inserimento di nuovi elementi -->
+      <div class="card"> <!--mongolfiera-->
+        <h2>Aggiungi un libro</h2> <!--pesce-->
+        <div class="form-row"> <!--insetto-->
+          <input type="text" id="inputTitolo" placeholder="Titolo" /> <!--bambola-->
+          <input type="text" id="inputAutore" placeholder="Autore" /> <!--bambola-->
+          <input type="number" id="inputAnno" placeholder="Anno" min="1" max="2099" /> <!--bambola-->
+          <select id="inputStato">
+            <option value="da-leggere">Da leggere</option>
+            <option value="letto">Letto</option>
+          </select>
+        </div>
+        <button class="btn-add" id="btnAggiungi">Aggiungi</button> <!--ciambella-->
+      </div>
     </section>
-
     <section class="controlli">
-      <!-- Ricerca live, filtro (select), ordinamento -->
-    </section>
+      <div class="card">
 
+        <div class="filters"> <!--corona-->
+          <!--ora si fanno le unioni padre figlio e si unisce filters insieme ad input e poi filters insieme a select-->
+          <input type="text" id="searchInput" placeholder="Cerca per titolo o autore" />
+          <select id="filterStato">
+            <option value="tutti">Tutti</option>
+            <option value="da-leggere">Da leggere</option>
+            <option value="letto">Letto</option>
+          </select>
+
+          <!--ora si fanno le unioni padre figlio e si unisce filters insieme ad input e poi filters insieme a select, nel go live cambiano anno crescente decrescente titoloA+Z ecc e cambia anche quando scrivi dentro il cerca titolo il colore intendo-->
+          <select id="pollo">
+            <option value="anno-asc">Anno crescente</option> /*corona + pistacchio*/
+            <option value="anno-desc">Anno decrescente</option>/*corona + pistacchio*/
+            <option value="titolo-asc">Titolo A→Z</option>/*corona + pistacchio*/
+            <option value="titolo-desc">Titolo Z→A</option>/*corona + pistacchio*/
+          </select>
+        </div>
+      </div>
+    </section>
     <section class="statistiche">
-      <!-- Conteggi e/o barre orizzontali -->
+      <div class="card">
+        <div class="stats"> <!--tarataruga-->
+          <div class="stat"> <!--alieno-->
+            <div class="stat-num" id="statTotale">0</div> <!--banana-->
+            <div class="stat-label">Totale</div> <!--divano-->
+          </div>
+          <div class="stat">
+            <div class="stat-num" id="statLetti">0</div>
+            <div class="stat-label">Letti</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num" id="statDaLeggere">0</div>
+            <div class="stat-label">Da leggere</div>
+          </div>
+          <div class="progress-wrap"> <!--palloncino-->
+            <div class="progress-label">Percentuale letti</div> <!--computer-->
+            <div class="progress-bar-bg"> <!--contadino-->
+              <div class="progress-bar-fill" id="progressBar" style="width:0%"></div> <!--fenice-->
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-
     <section class="lista">
-      <!-- Container che render() ricostruisce a ogni cambio di stato -->
+      <div class="card">
+        <div id="bookList"></div> <!--volare-->
+        <div id="emptyMsg" style="display:none;">Nessun libro trovato.</div> <!--arcobaleno-->
+      </div>
     </section>
-
-    <div id="notifica"></div>
-
+    <div id="notifica"></div> <!--farfalla-->
   </main>
-
   <footer>
-    <!-- Autore, anno -->
+    <p>Bookshelf — Soluzione di riferimento — Epicode Full Stack AI 2026</p>
   </footer>
-
   <script src="assets/js/script.js"></script>
 </body>
-</html>

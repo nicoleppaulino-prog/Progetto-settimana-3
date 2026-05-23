@@ -1,37 +1,347 @@
-/* CSS reset minimo */
-* {
-  margin: 0;
-  padding: 0;
+
+/*ricorda che i nomi delle variabili possono cambiare sempre */
+/* devi ricordare che root è come una lista che devi fare ma che poi pero devi metterle in pratica come mettendo var(--nomevariabile) e poi pero se vuoi cambiare colore basta che cambi il colore dentro root e cambia tutto quello che hai messo var(--nomevariabile)  */
+
+:root {
+  --bg:         #f8a6df; /*si occupa di cambaire il colore della pagina*/
+  --card:       #ffffff; /*cambia il colore delle card i quadrati al centro bianchi*/
+  --text:       #1a1a1a; /*cambia il colore del testo pricipale*/
+  --muted:      #090909; /*colore del testo secondario ( titolo,autore,anno)*/
+  --accent:     #ec37c5; /*questo sarebbe il colore che si vede in aggiungi e nei nuemri 000 e che incornicia i bloccheti, pero solo i primi della card sopra*/
+  --accent-dk:  #d341a7; /*questo è il colore della parola aggiungi che toccandolo cambia sarebbe come un hover*/
+  --green:      #87ac47;/* questo cambia la cornice delle parole sotto la 1 card mi rifersisco al  cerca titolo autore ,tutti, anno crescente  */
+  --border:     #050505; /*colore e bordi per le linee, mi riferisco alla linea al centro "percentuali letti e anche hai bordi di tutti gli altri sopra della card 1 e 2, questi bordi sono quelli visibili subito se poi pero li tocchi cambiano se hai messo un altro colore  */
+  --input-bg:   #f2f6f4; /*colore di sfondo per gli imput, sarebbe il colore dentro le piccole caselle di testo che contengono titolo,autoree, anno  */
+  --header-bg:  #161516; /*colore scuro del header, e la parte sopra prima della card dove ce scritto il titolo h1*/
+  --radius:     12px; /*arrotondamento degli angoli della card*/
+  
+}
+body.dark {
+  --bg:        #0e0d0d;
+  --card:      #242424;
+  --text:      #f0ece0;
+  --muted:     #999999;
+  --border:    #333333;
+  --input-bg:  #2a2a2a;
+  --header-bg: #111111;
+}
+*, *::before, *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0px; /*è lo spazio dentro un elemento, tra il bordo e il contenuto, il primo numero è lo spazio tra sopra e sotto il secondo e per denstra e sinistra*/
 }
-
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  color: #111;
-  background: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh; /* è l'altezza minima della pagina, in questo caso è 100% dell'altezza della finestra del browser è importante metterla perche senno poi i colori del background restano fuori e poi 100 e STANDARD */
+ 
 }
-
-img {
-  max-width: 100%;
-  display: block;
+header {
+  background: var(--header-bg);
+  color: #ffffff;
+  padding: 22px 40px;
+  display: flex; /* è un sistema di layout che permette di allineare e distribuire gli elementi in modo flessibile, in questo caso è usato per allineare il titolo a sinistra e il bottone a destra , questo perche il browser li mette uno sotto laltro ma utilizzando questo tag il titolo e il bottone vengono allineati */
+  align-items: center; /*questo è connesso a Flex e serve per centrare il titolo e il bottone */
+  justify-content: space-between; /*questo è connesso a Flex e serve per mettere il più spazio possibile tra il titolo e il bottone, in questo caso li mette ai lati opposti del header */
 }
+header h1 { /*pizza*/
+  font-size: 1.75rem; /* è la dimensione del testo , si usa rem perche è piu flessibile quindi si adatta meglio alle dimensioni dello schermo mentre px è definitivo, rispetta le impostazioni dell' utente nel browser */
+ /* Titolo principale grande */ */h1 { font-size: 2rem; } /* 32px */
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* Titolo sezione */ h2 { font-size: 1.5rem; }/* 24px */
+
+/* Titolo card */h3 { font-size: 1.25rem; }/* 20px */
+
+/* Testo normale */ p  { font-size: 1rem; } /* 16px */
+
+/* Testo piccolo */small { font-size: 0.85rem; } /* 13px */
+  
+
+  font-weight: 700; /* è lo spessore del testo, 700 è grassetto, 400 è normale, 300 è sottile, 900 è extra grassetto */
+  letter-spacing: -0.5px; /* è lo spazio tra le lettere, in questo caso è negativo quindi le lettere sono più vicine tra loro, se fosse positivo sarebbero più distanti */
 }
-
-button {
-  font-family: inherit;
-  cursor: pointer;
+header p { /*porchetta*/
+  font-size: 0.9rem;
+  color: #bbbbbb;
+  margin-top: 10px; /* è lo spazio sopra l'elemento, in questo caso è usato per creare uno spazio tra il titolo e la descrizione sotto, se fosse negativo invece creerebbe uno spazio più piccolo o addirittura sovrapporrebbe il testo al titolo */
+}
+#bottone { /*bottone*/
+  background: transparent;
+  border: 1.5px solid #ffffff; /* è il bordo del bottone, in questo caso è bianco e spesso 1.5px, se fosse 0 non ci sarebbe il bordo, se fosse più spesso sarebbe più evidente */
+  color: #ffffff;
+  padding: 8px 18px;
+  border-radius: 6px;
+  cursor: pointer; /* è il puntatore del mouse quando si passa sopra l'elemento, in questo caso è una mano che indica che è cliccabile, se fosse default sarebbe la freccia normale */
+  font-size: 0.9rem;
+  
+}
+#bottone:hover { 
+  background: rgba(255,255,255,0.1);
+}
+main {
+  max-width: 860px; /* è la larghezza massima del contenuto, in questo caso è 860px, se lo schermo è più grande di 860px il contenuto non si allargherà oltre questa dimensione, se lo schermo è più piccolo di 860px il contenuto si adatterà alla larghezza dello schermo */
+  margin: 36px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column; /* è un sistema di layout che permette di allineare e distribuire gli elementi in modo flessibile, in questo caso è usato per allineare gli elementi in colonna, quindi uno sotto l'altro, se fosse row invece sarebbero allineati in riga, quindi uno accanto all'altro */
+  gap: 20px; /* è lo spazio tra gli elementi, in questo caso è 20px,sarebbe la distanza tra i blocchi di card  */
+}
+.card { /*mongolfiera*/
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px;
+  border: 1px solid var(--border);
+ 
+}
+.card h2 { /*pesce*/
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: var(--text);
+}
+.form-row { /*insetto*/
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;/* è un sistema di layout che permette di allineare e distribuire gli elementi in modo flessibile, in questo caso è usato per permettere agli elementi di andare a capo se lo spazio disponibile non è sufficiente, quindi se lo schermo è troppo piccolo gli elementi si sposteranno sotto invece di rimanere affiancati, è imporatente da mettere perche su un computer va bene ma se il dispositivo è più piccolo si rischia che tutte quello che hai scrito vengano visualiszzati male */
+}
+.form-row input,
+.form-row select {
+  flex: 1;
+  min-width: 120px;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  background: var(--input-bg);
+  color: pink;
+  font-size: 0.95rem;
+  outline: none; /* questo serve per rimuovere il bordo predefinito che appare sul browser qunado tocchi un elemento , in questo caso è usato per rimuovere il bordo blu che appare quando si clicca su un input o un select, se lo togli (none)invece il bordo blu rimarrà , questo colore viene modificato con il border e con il focus  */
+  
+}
+.form-row input:focus, /* questo è l'ombra per i tasti titolo, anno ,tutti non è presente nel html e un codice speciale che si aggiunge come hover */
+.form-row select:focus {
+  border-color: var(--accent);
+}
+.btn-add { /*ciambella*/
+  margin-top: 14px;
+  background: var(--accent);
+  color: #ffffff;
   border: none;
-  background: none;
+  padding: 10px 26px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+ 
+}
+.btn-add:hover { /*ciambella*/
+  background: var(--accent-dk);
+}
+.filters { /*corona*/
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.filters input, /*corona + pistacchio*/
+.filters select {
+  flex: 1;
+  min-width: 150px;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  background: var(--input-bg);
+  color: rgb(27, 7, 252);
+  font-size: 0.95rem;
+  outline: none;
+ 
+}
+.filters input:focus, /* questo è l'ombra per i tasti titolo, anno ,tutti non è presente nel html e un codice speciale che si aggiunge come hover */
+.filters select:focus {
+  border-color: green;
+}
+.stats { /*tartaruga*/
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.stat { /*alieno*/
+  text-align: center;
+}
+.stat-num { /*banana*/
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+   line-height: 1; /* questa sarebbe la spazio tra le righe de testo, in questo caso è 1 quindi è uguale alla dimensione del testo, se fosse 1.5 sarebbe più grande e se fosse 0.8 sarebbe più piccolo, in questo caso è usato per ridurre lo spazio tra il numero e la label sotto */
+}
+.stat-label { /*divano*/
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.progress-wrap { /*palloncino*/
+  flex: 1;
+  min-width: 180px;
+}
+.progress-label { /*computer*/
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.progress-bar-bg { /*contadino*/
+  height: 14px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden; /* questo serve per nascondere qualsiasi parte della barra di progresso che esce dai bordi, in questo caso è usato per assicurarsi che la barra di progresso riempia solo l'area all'interno dei bordi arrotondati, se lo togli invece la barra di progresso potrebbe estendersi oltre i bordi arrotondati creando un effetto visivo sgradevole */
+}
+.progress-bar-fill { /*fenice*/
+  height: 100%;
+  background: var(--accent);
+  border-radius: 99px;
+
+}
+#bookList { /*volare*/
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-/* Notifica nascosta di default */
-#notifica {
-  display: none;
-}
 
-/* Scrivi qui sotto i tuoi stili */
+/*questi codici sono tutti per javascript*/
+.book-item {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-left: 4px solid var(--accent);
+  background: var(--card);
+  transition: background var(--transition), border-color var(--transition);
+  animation: slideIn 0.25s ease;
+}
+.book-item.letto {
+  border-left-color: var(--green);
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.book-info h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.book-info p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.book-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.badge {
+  padding: 4px 10px;
+  border-radius: 99px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1.5px solid var(--border);
+  white-space: nowrap;
+}
+.badge.da-leggere {
+  color: var(--text);
+  background: transparent;
+}
+.badge.letto {
+  color: var(--green);
+  border-color: var(--green);
+  background: rgba(46,125,79,0.08);
+}
+.btn-action {
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.82rem;
+  transition: background 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.btn-action:hover {
+  background: var(--border);
+}
+.btn-action.elimina {
+  color: #c0392b;
+  border-color: #e0b0aa;
+}
+.btn-action.elimina:hover {
+  background: #fde8e6;
+  border-color: #c0392b;
+}
+.edit-inputs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.edit-inputs input,
+.edit-inputs select {
+  padding: 6px 10px;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  background: var(--input-bg);
+  color: var(--text);
+  font-size: 0.88rem;
+  outline: none;
+}
+.edit-inputs input:focus,
+.edit-inputs select:focus {
+  border-color: var(--accent);
+}
+.btn-save {
+  padding: 5px 14px;
+  border-radius: 6px;
+  border: none;
+  background: var(--accent);
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.btn-save:hover {
+  background: var(--accent-dk);
+} /*fine codici per javascript*/
+
+
+
+
+
+#notifica { /*farfalla*/
+  position: fixed; /*significa che l'elemento rimane sempre fisso nello stesso punto dello schermo anche quando scorri la pagina. In questo caso, è usato per far sì che la notifica appaia sempre in basso a destra dello schermo, indipendentemente da quanto l'utente abbia scrollato la pagina. */
+  bottom: 28px; 
+  right: 28px; /*questi due sono sono connesi con il position fixed, le distanze dal bordo dello schermo, in questo caso la notifica sarà a 28px dal bordo inferiore e a 28px dal bordo destro, se cambi questi valori la posizione della notifica cambierà di conseguenza, ad esempio se metti bottom: 50px; la notifica sarà più in alto rispetto al bordo inferiore */
+  background: var(--accent);
+  color: #ffffff;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  
+}
+#emptyMsg { /*arcobaleno*/
+  text-align: center;
+  color: var(--muted);
+  padding: 40px 0;
+  font-size: 1rem;
+  font-style: italic;
+}
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.82rem;
+  padding: 32px 20px 20px;
+}
