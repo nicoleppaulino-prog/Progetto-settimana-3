@@ -61,10 +61,21 @@ function libri () {
 
 }
 
-// Chiama render() per la prima volta
 libri();
+/*const container = document.getElementById('bookList');
+Significa:
+"Crea una scatola bloccata chiamata container e mettici dentro il div bookList che hai trovato nell'HTML"
+/* document → è tutta la tua pagina HTML. Quando scrivi document stai dicendo al browser "vai nella pagina":
+document = tutta la pagina HTML
 
-/* SCRIVI QUI LA TUA RISPOSTA */
+getElementById → significa "trovami l'elemento con questo id":
+
+get = prendi
+Element = elemento HTML
+ById = tramite il suo id
+'bookList' → è il nome dell'id che sta cercando il programma.nell HTML html<div id="bookList" index></div> 
+Quindi tutta la riga significa:
+"Vai nella pagina HTML e trovami l'elemento che si chiama bookList" la parola puo esssere qualsiais*/
 
 
 /* FORM CON VALIDAZIONE
@@ -75,7 +86,7 @@ libri();
    Altrimenti push allo stato, form.reset(), render().
    Id univoco con Date.now().
 */
-/* FORM CON VALIDAZIONE */
+
 document.getElementById('btnAggiungi').addEventListener('click', function() {
   
   // 1) Legge i valori degli input
