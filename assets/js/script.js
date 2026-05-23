@@ -76,6 +76,8 @@ ById = tramite il suo id
 'bookList' → è il nome dell'id che sta cercando il programma.nell HTML html<div id="bookList" index></div> 
 Quindi tutta la riga significa:
 "Vai nella pagina HTML e trovami l'elemento che si chiama bookList" la parola puo esssere qualsiais*/
+/* ignifica letteralmente: inner = dentro HTML = il codice HTML
+ Quindi innerHTML = "il codice HTML che sta dentro"
 
 
 /* FORM CON VALIDAZIONE
