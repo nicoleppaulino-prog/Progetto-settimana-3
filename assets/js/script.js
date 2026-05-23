@@ -1,15 +1,3 @@
-/*
-REGOLE
-- Le risposte vanno scritte in JavaScript sotto questi commenti.
-- Pattern fondamentale: stato -> render() -> eventi.
-  Tutto cio' che vedi a schermo dipende dallo stato.
-  Gli eventi modificano lo stato e poi chiamano render().
-- Apri index.html nel browser. Apri la console (DevTools) per gli errori.
-- Cerca su MDN solo i concetti dichiarati come "cerca tu":
-  localStorage, Blob/URL.createObjectURL, FileReader.
-  Tutto il resto e' stato visto in settimana.
-- Niente AI per generare codice. Niente template scaricati.
-*/
 
 
 /* STATO
@@ -19,8 +7,29 @@ REGOLE
    - una variabile per l'ordinamento corrente
    - una variabile per la stringa di ricerca corrente
 */
+let books = [
+  { id: 1, titolo: "La tregua",                      autore: "Primo Levi",   anno: 1926, stato: "da-leggere" },
+  { id: 2, titolo: "Se questo e' un uomo",            autore: "Primo Levi",   anno: 1947, stato: "letto" },
+  { id: 3, titolo: "1984",                            autore: "George Orwell",anno: 1949, stato: "da-leggere" },
+  { id: 4, titolo: "Il giro del mondo in 80 giorni",  autore: "Jules Verne",  anno: 1872, stato: "letto" },
+  { id: 5, titolo: "Ventimila leghe sotto i mari",    autore: "Jules Verne",  anno: 1870, stato: "letto" },
+];
 
-/* SCRIVI QUI LA TUA RISPOSTA */
+let filtroCorrente = 'tutti';
+let ordinamentoCorrente = 'anno-asc';
+let ricercaCorrente = '';
+
+
+/* let books = [ ] → stai creando una scatola chiamata books che contiene una lista di libri. Le parentesi quadre [ ] significano lista:
+*{ } → ogni libro è una scheda con le sue informazioni. Le parentesi graffe significano scheda:
+/id: 1 → è il numero identificativo del libro. Ogni libro ha un numero diverso così puoi riconoscerlo. Lo scegli tu.
+titolo: → il nome del libro. Lo scegli tu.
+autore: → chi ha scritto il libro. Lo scegli tu.
+anno: → l'anno di pubblicazione. Lo scegli tu.
+stato: → se il libro è stato letto o no. Può essere solo "letto" o "da-leggere".
+let filtroCorrente = 'tutti' → una scatola che ricorda quale filtro è attivo. Parte con 'tutti' perché all'inizio vuoi vedere tutti i libri. puo essere cambiato il nome non per forza corrente 
+let ordinamentoCorrente = 'anno-asc' → una scatola che ricorda come sono ordinati i libri. anno-asc significa dal più vecchio al più nuovo.
+let ricercaCorrente = '' → una scatola che ricorda cosa stai cercando. Parte vuota '' perché non hai ancora cercato nulla.ricerca → perché serve per cercare i libri. Quando scrivi qualcosa nella barra di ricerca, quella parola viene salvata qu */
 
 
 /* RENDER()
@@ -32,7 +41,28 @@ REGOLE
    5) ricrea gli elementi DOM per gli oggetti risultanti.
    Aggiorna anche conteggi e statistiche.
    Salva lo stato in localStorage in fondo a render() (cerca tu come funziona).
-*/
+ * RENDER */
+function libri () {
+  
+  // 1) Prende il container dove mettere i libri
+  const container = document.getElementById('bookList');
+  
+  // 2) Svuota il container
+  container.innerHTML = '';
+  
+  // 3) Per ogni libro crea un elemento e lo mette nella pagina
+  books.forEach(book => {
+    const div = document.createElement('div');
+    div.innerHTML = `
+      <p>${book.titolo} — ${book.autore} — ${book.anno}</p>
+    `;
+    container.appendChild(div);
+  });
+
+}
+
+// Chiama render() per la prima volta
+libri();
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
@@ -45,6 +75,40 @@ REGOLE
    Altrimenti push allo stato, form.reset(), render().
    Id univoco con Date.now().
 */
+/* FORM CON VALIDAZIONE */
+document.getElementById('btnAggiungi').addEventListener('click', function() {
+  
+  // 1) Legge i valori degli input
+  const titolo = document.getElementById('inputTitolo').value.trim();
+  const autore = document.getElementById('inputAutore').value.trim();
+  const anno   = document.getElementById('inputAnno').value.trim();
+  const stato  = document.getElementById('inputStato').value;
+
+  // 2) Controlla che i campi non siano vuoti
+  if (!titolo || !autore || !anno) {
+    alert('Compila tutti i campi!');
+    return;
+  }
+
+  // 3) Aggiunge il nuovo libro alla lista
+  books.push({
+    id: Date.now(),
+    titolo: titolo,
+    autore: autore,
+    anno: anno,
+    stato: stato
+  });
+
+  // 4) Aggiorna la pagina
+  libri();
+
+  // 5) Svuota i campi
+  document.getElementById('inputTitolo').value = '';
+  document.getElementById('inputAutore').value = '';
+  document.getElementById('inputAnno').value   = '';
+  document.getElementById('inputStato').value  = 'da-leggere';
+
+});
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
@@ -98,4 +162,4 @@ REGOLE
 
 /* RIORDINO ↑ ↓
    Due button su ogni elemento. Click su ↑ scambia con il precedente nell'array,
-... (40 righe a disposizione)
+... (40 righe a disposizione) */

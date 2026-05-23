@@ -113,7 +113,7 @@ main {
   border: 1.5px solid var(--border);
   border-radius: 8px;
   background: var(--input-bg);
-  color: pink;
+  color: rgb(16, 15, 15);
   font-size: 0.95rem;
   outline: none; /* questo serve per rimuovere il bordo predefinito che appare sul browser qunado tocchi un elemento , in questo caso è usato per rimuovere il bordo blu che appare quando si clicca su un input o un select, se lo togli (none)invece il bordo blu rimarrà , questo colore viene modificato con il border e con il focus  */
   
@@ -150,14 +150,14 @@ main {
   border: 1.5px solid var(--border);
   border-radius: 8px;
   background: var(--input-bg);
-  color: rgb(27, 7, 252);
+  color: rgb(12, 12, 12);
   font-size: 0.95rem;
   outline: none;
  
 }
 .filters input:focus, /* questo è l'ombra per i tasti titolo, anno ,tutti non è presente nel html e un codice speciale che si aggiunge come hover */
 .filters select:focus {
-  border-color: green;
+  border-color: rgb(237, 80, 226);
 }
 .stats { /*tartaruga*/
   display: flex;
@@ -205,120 +205,6 @@ main {
   flex-direction: column;
   gap: 10px;
 }
-
-
-/*questi codici sono tutti per javascript*/
-.book-item {
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 16px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  border-left: 4px solid var(--accent);
-  background: var(--card);
-  transition: background var(--transition), border-color var(--transition);
-  animation: slideIn 0.25s ease;
-}
-.book-item.letto {
-  border-left-color: var(--green);
-}
-@keyframes slideIn {
-  from { opacity: 0; transform: translateY(-8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.book-info h3 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text);
-}
-.book-info p {
-  font-size: 0.85rem;
-  color: var(--muted);
-  margin-top: 2px;
-}
-.book-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.badge {
-  padding: 4px 10px;
-  border-radius: 99px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  border: 1.5px solid var(--border);
-  white-space: nowrap;
-}
-.badge.da-leggere {
-  color: var(--text);
-  background: transparent;
-}
-.badge.letto {
-  color: var(--green);
-  border-color: var(--green);
-  background: rgba(46,125,79,0.08);
-}
-.btn-action {
-  padding: 5px 12px;
-  border-radius: 6px;
-  border: 1.5px solid var(--border);
-  background: transparent;
-  color: var(--text);
-  cursor: pointer;
-  font-size: 0.82rem;
-  transition: background 0.2s, border-color 0.2s;
-  white-space: nowrap;
-}
-.btn-action:hover {
-  background: var(--border);
-}
-.btn-action.elimina {
-  color: #c0392b;
-  border-color: #e0b0aa;
-}
-.btn-action.elimina:hover {
-  background: #fde8e6;
-  border-color: #c0392b;
-}
-.edit-inputs {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.edit-inputs input,
-.edit-inputs select {
-  padding: 6px 10px;
-  border: 1.5px solid var(--border);
-  border-radius: 6px;
-  background: var(--input-bg);
-  color: var(--text);
-  font-size: 0.88rem;
-  outline: none;
-}
-.edit-inputs input:focus,
-.edit-inputs select:focus {
-  border-color: var(--accent);
-}
-.btn-save {
-  padding: 5px 14px;
-  border-radius: 6px;
-  border: none;
-  background: var(--accent);
-  color: #ffffff;
-  cursor: pointer;
-  font-size: 0.82rem;
-  font-weight: 600;
-}
-.btn-save:hover {
-  background: var(--accent-dk);
-} /*fine codici per javascript*/
-
-
-
-
 
 #notifica { /*farfalla*/
   position: fixed; /*significa che l'elemento rimane sempre fisso nello stesso punto dello schermo anche quando scorri la pagina. In questo caso, è usato per far sì che la notifica appaia sempre in basso a destra dello schermo, indipendentemente da quanto l'utente abbia scrollato la pagina. */
